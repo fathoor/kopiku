@@ -9,7 +9,7 @@ class CategoriesWidget extends StatefulWidget {
     'Espresso',
     'Brewed',
     'Blended',
-    'Others',
+    'Lainnya',
   ];
 
   @override

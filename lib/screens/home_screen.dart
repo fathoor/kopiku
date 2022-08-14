@@ -70,7 +70,7 @@ class MobileHome extends StatelessWidget {
                           height: 50,
                           padding: const EdgeInsets.all(3),
                           decoration: const BoxDecoration(
-                            color: black,
+                            color: cream,
                             shape: BoxShape.circle,
                           ),
                           child: Container(
@@ -187,12 +187,12 @@ class MobileHome extends StatelessWidget {
                             width: 48,
                             height: 48,
                             decoration: BoxDecoration(
-                              color: black,
+                              color: cream,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: const Icon(
                               Icons.filter_list_rounded,
-                              color: grey,
+                              color: black,
                             ),
                           ),
                         ),
@@ -312,7 +312,7 @@ class WebHome extends StatelessWidget {
                                 height: 50,
                                 padding: const EdgeInsets.all(3),
                                 decoration: const BoxDecoration(
-                                  color: black,
+                                  color: cream,
                                   shape: BoxShape.circle,
                                 ),
                                 child: Container(
@@ -404,12 +404,12 @@ class WebHome extends StatelessWidget {
                                   width: 48,
                                   height: 48,
                                   decoration: BoxDecoration(
-                                    color: black,
+                                    color: cream,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: const Icon(
                                     Icons.filter_list_rounded,
-                                    color: grey,
+                                    color: black,
                                   ),
                                 ),
                               ),
