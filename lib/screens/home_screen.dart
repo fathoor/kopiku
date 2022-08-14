@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:kopiku/constants/constant.dart';
 import 'package:kopiku/widgets/categories_widget.dart';
+import 'package:kopiku/widgets/items_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,7 +35,7 @@ class MobileHome extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(24, 48, 24, 0),
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -127,10 +126,10 @@ class MobileHome extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Ceriakan dan Warnai Hari\nBersama Kopi Terbaik Pilihanmu',
+                      'Ceriakan dan Warnai Hari\nBersama Kopi Pilihanmu',
                       style: bold.copyWith(
                         color: black,
-                        fontSize: 28,
+                        fontSize: 26,
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -203,7 +202,7 @@ class MobileHome extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Categories',
+                      'Kategori',
                       style: bold.copyWith(
                         color: black,
                         fontSize: 24,
@@ -214,6 +213,9 @@ class MobileHome extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const CategoriesWidget(),
+              const SizedBox(height: 24),
+              const ItemsWidget(),
+              const SizedBox(height: 24),
             ],
           ),
         ),
