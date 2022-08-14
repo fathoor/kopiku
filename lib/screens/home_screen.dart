@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:kopiku/constants/constant.dart';
 import 'package:kopiku/widgets/categories_widget.dart';
@@ -178,16 +176,24 @@ class MobileHome extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color: black,
-                            borderRadius: BorderRadius.circular(10),
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.filter_list_rounded,
-                            color: grey,
+                          child: Container(
+                            width: 48,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color: black,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Icon(
+                              Icons.filter_list_rounded,
+                              color: grey,
+                            ),
                           ),
                         ),
                       ],
@@ -387,16 +393,24 @@ class WebHome extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 16),
-                              Container(
-                                width: 48,
-                                height: 48,
-                                decoration: BoxDecoration(
-                                  color: black,
-                                  borderRadius: BorderRadius.circular(10),
+                              GestureDetector(
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
                                 ),
-                                child: const Icon(
-                                  Icons.filter_list_rounded,
-                                  color: grey,
+                                child: Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    color: black,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Icon(
+                                    Icons.filter_list_rounded,
+                                    color: grey,
+                                  ),
                                 ),
                               ),
                             ],
