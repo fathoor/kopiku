@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kopiku/constants/constant.dart';
+import 'package:kopiku/screens/home_screen.dart';
 
 class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({Key? key}) : super(key: key);
@@ -30,18 +31,27 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           child: Row(
             children: List.generate(
               CategoriesWidget.categories.length,
-              (index) => Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                margin: EdgeInsets.only(left: index == 0 ? 24 : 16, right: 16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: index == 0 ? cream : white,
+              (index) => GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  ),
                 ),
-                child: Center(
-                  child: Text(
-                    CategoriesWidget.categories[index],
-                    style: medium.copyWith(
-                        color: index == 0 ? black : grey, fontSize: 16),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  margin:
+                      EdgeInsets.only(left: index == 0 ? 24 : 16, right: 16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: index == 0 ? cream : white,
+                  ),
+                  child: Center(
+                    child: Text(
+                      CategoriesWidget.categories[index],
+                      style: medium.copyWith(
+                          color: index == 0 ? black : grey, fontSize: 16),
+                    ),
                   ),
                 ),
               ),
