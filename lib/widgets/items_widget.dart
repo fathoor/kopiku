@@ -4,31 +4,55 @@ import 'package:kopiku/model/coffee.dart';
 import 'package:kopiku/screens/detail_screen.dart';
 import 'package:kopiku/widgets/favorites_widget.dart';
 
-class ItemsWidget extends StatefulWidget {
-  const ItemsWidget({Key? key}) : super(key: key);
-
-  @override
-  State<ItemsWidget> createState() => _ItemsWidgetState();
-}
-
-class _ItemsWidgetState extends State<ItemsWidget> {
-  final _scrollController = ScrollController();
+class ItemsWidget extends StatelessWidget {
+  final selected;
+  const ItemsWidget({Key? key, required this.selected}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      controller: _scrollController,
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(
-            coffeeList.length,
-            (index) => GestureDetector(
+    var selectedList;
+    switch (selected) {
+      case 'Semua':
+        {
+          selectedList = coffeeList;
+        }
+        break;
+      case 'Espresso':
+        {
+          selectedList = espressoList;
+        }
+        break;
+      case 'Brewed':
+        {
+          selectedList = brewedList;
+        }
+        break;
+      case 'Blended':
+        {
+          selectedList = blendedList;
+        }
+        break;
+      case 'Lainnya':
+        {
+          selectedList = otherList;
+        }
+        break;
+    }
+
+    return SizedBox(
+      height: 400,
+      child: Scrollbar(
+        controller: ScrollController(),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: selectedList.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailScreen(coffee: coffeeList[index]),
+                  builder: (context) =>
+                      DetailScreen(coffee: selectedList[index]),
                 ),
               ),
               child: Container(
@@ -38,7 +62,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(coffeeList[index].image),
+                    image: AssetImage(selectedList[index].image),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -64,7 +88,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              coffeeList[index].name,
+                              selectedList[index].name,
                               style: bold.copyWith(
                                 color: white,
                                 fontSize: 16,
@@ -72,7 +96,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Rp${coffeeList[index].price}',
+                              'Rp${selectedList[index].price}',
                               style: medium.copyWith(
                                 color: white,
                                 fontSize: 12,
@@ -86,8 +110,8 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );
