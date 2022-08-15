@@ -4,16 +4,17 @@ import 'package:kopiku/widgets/categories_widget.dart';
 import 'package:kopiku/widgets/items_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final selected;
+  const HomeScreen({Key? key, this.selected = 'Semua'}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth > 900) {
-          return WebHome();
+          return WebHome(selected: selected);
         } else {
-          return MobileHome();
+          return MobileHome(selected: selected);
         }
       },
     );
@@ -21,7 +22,8 @@ class HomeScreen extends StatelessWidget {
 }
 
 class MobileHome extends StatelessWidget {
-  const MobileHome({Key? key}) : super(key: key);
+  final selected;
+  const MobileHome({Key? key, required this.selected}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -218,9 +220,9 @@ class MobileHome extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              const CategoriesWidget(),
+              CategoriesWidget(selected: selected),
               const SizedBox(height: 24),
-              const ItemsWidget(),
+              ItemsWidget(selected: selected),
               const SizedBox(height: 24),
             ],
           ),
@@ -231,7 +233,8 @@ class MobileHome extends StatelessWidget {
 }
 
 class WebHome extends StatelessWidget {
-  const WebHome({Key? key}) : super(key: key);
+  final selected;
+  const WebHome({Key? key, required this.selected}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -438,9 +441,9 @@ class WebHome extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              const CategoriesWidget(),
+              CategoriesWidget(selected: selected),
               const SizedBox(height: 24),
-              const ItemsWidget(),
+              ItemsWidget(selected: selected),
               const SizedBox(height: 24),
             ],
           ),
