@@ -1,62 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:kopiku/constants/constant.dart';
+import 'package:kopiku/model/coffee.dart';
 import 'package:kopiku/screens/home_screen.dart';
 
 class CategoriesWidget extends StatefulWidget {
-  const CategoriesWidget({Key? key}) : super(key: key);
-
-  static List<String> categories = [
-    'Espresso',
-    'Brewed',
-    'Blended',
-    'Lainnya',
-  ];
+  final selected;
+  const CategoriesWidget({Key? key, required this.selected}) : super(key: key);
 
   @override
   State<CategoriesWidget> createState() => _CategoriesWidgetState();
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
-  final _scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 32,
+      height: 36,
       child: Scrollbar(
-        controller: _scrollController,
-        child: SingleChildScrollView(
-          controller: _scrollController,
+        controller: ScrollController(),
+        child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.generate(
-              CategoriesWidget.categories.length,
-              (index) => GestureDetector(
-                onTap: () => Navigator.push(
+          itemCount: categoryList.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                // setState(() => selected = categoryList[index]);
+                Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
+                    builder: (context) =>
+                        HomeScreen(selected: categoryList[index]),
                   ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                margin: const EdgeInsets.only(left: 24, bottom: 4),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: widget.selected == categoryList[index] ? cream : white,
+                  boxShadow: widget.selected == categoryList[index]
+                      ? [
+                          BoxShadow(
+                            color: black.withOpacity(0.2),
+                            offset: const Offset(0, 0),
+                            blurRadius: 16,
+                          )
+                        ]
+                      : null,
                 ),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  margin:
-                      EdgeInsets.only(left: index == 0 ? 24 : 16, right: 16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: index == 0 ? cream : white,
-                  ),
-                  child: Center(
-                    child: Text(
-                      CategoriesWidget.categories[index],
-                      style: medium.copyWith(
-                          color: index == 0 ? black : grey, fontSize: 16),
-                    ),
+                child: Text(
+                  categoryList[index],
+                  style: medium.copyWith(
+                    color:
+                        widget.selected == categoryList[index] ? black : grey,
+                    fontSize: 16,
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );
