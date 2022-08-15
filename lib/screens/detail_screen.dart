@@ -5,7 +5,6 @@ import 'package:kopiku/widgets/favorites_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   final Coffee coffee;
-
   const DetailScreen({Key? key, required this.coffee}) : super(key: key);
 
   @override
@@ -24,7 +23,6 @@ class DetailScreen extends StatelessWidget {
 
 class MobileDetail extends StatelessWidget {
   final Coffee coffee;
-
   const MobileDetail({Key? key, required this.coffee}) : super(key: key);
 
   @override
@@ -74,7 +72,7 @@ class MobileDetail extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Espresso',
+                        coffee.category,
                         style: semiBold.copyWith(
                           color: white,
                           fontSize: 15,
@@ -224,7 +222,7 @@ class WebDetail extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Espresso',
+                        coffee.category,
                         style: semiBold.copyWith(
                           color: black,
                           fontSize: 15,
