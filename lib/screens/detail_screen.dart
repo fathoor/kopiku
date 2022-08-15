@@ -121,11 +121,14 @@ class MobileDetail extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        coffee.detail,
-                        style: regular.copyWith(
-                          color: white,
-                          fontSize: 14,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          coffee.detail,
+                          style: regular.copyWith(
+                            color: white,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -285,11 +288,14 @@ class WebDetail extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          coffee.detail,
-                          style: regular.copyWith(
-                            color: white,
-                            fontSize: 14,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            coffee.detail,
+                            style: regular.copyWith(
+                              color: white,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 16),
