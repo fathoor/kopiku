@@ -4,14 +4,21 @@ import 'package:kopiku/model/coffee.dart';
 import 'package:kopiku/screens/detail_screen.dart';
 import 'package:kopiku/widgets/favorites_widget.dart';
 
-class ItemsWidget extends StatelessWidget {
+class ItemsWidget extends StatefulWidget {
   final selected;
   const ItemsWidget({Key? key, required this.selected}) : super(key: key);
 
   @override
+  State<ItemsWidget> createState() => _ItemsWidgetState();
+}
+
+class _ItemsWidgetState extends State<ItemsWidget> {
+  final _scrollController = ScrollController();
+
+  @override
   Widget build(BuildContext context) {
     var selectedList;
-    switch (selected) {
+    switch (widget.selected) {
       case 'Semua':
         {
           selectedList = coffeeList;
@@ -42,8 +49,9 @@ class ItemsWidget extends StatelessWidget {
     return SizedBox(
       height: 400,
       child: Scrollbar(
-        controller: ScrollController(),
+        controller: _scrollController,
         child: ListView.builder(
+          controller: _scrollController,
           scrollDirection: Axis.horizontal,
           itemCount: selectedList.length,
           itemBuilder: (context, index) {
@@ -115,5 +123,11 @@ class ItemsWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 }

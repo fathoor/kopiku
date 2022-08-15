@@ -12,6 +12,7 @@ class CategoriesWidget extends StatefulWidget {
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
+  final _scrollController = ScrollController();
   String selected = 'Semua';
 
   @override
@@ -19,8 +20,9 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     return SizedBox(
       height: 36,
       child: Scrollbar(
-        controller: ScrollController(),
+        controller: _scrollController,
         child: ListView.builder(
+          controller: _scrollController,
           scrollDirection: Axis.horizontal,
           itemCount: categoryList.length,
           itemBuilder: (context, index) {
@@ -65,5 +67,11 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 }
