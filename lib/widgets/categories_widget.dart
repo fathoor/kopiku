@@ -12,6 +12,8 @@ class CategoriesWidget extends StatefulWidget {
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
+  String selected = 'Semua';
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,12 +26,11 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // setState(() => selected = categoryList[index]);
+                setState(() => selected = categoryList[index]);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        HomeScreen(selected: categoryList[index]),
+                    builder: (context) => HomeScreen(selected: selected),
                   ),
                 );
               },
