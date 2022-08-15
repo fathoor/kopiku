@@ -4,7 +4,7 @@ import 'package:kopiku/model/coffee.dart';
 import 'package:kopiku/screens/home_screen.dart';
 
 class CategoriesWidget extends StatefulWidget {
-  final selected;
+  final String selected;
   const CategoriesWidget({Key? key, required this.selected}) : super(key: key);
 
   @override

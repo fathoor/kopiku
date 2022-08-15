@@ -4,7 +4,7 @@ import 'package:kopiku/widgets/categories_widget.dart';
 import 'package:kopiku/widgets/items_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  final selected;
+  final String selected;
   const HomeScreen({Key? key, this.selected = 'Semua'}) : super(key: key);
 
   @override

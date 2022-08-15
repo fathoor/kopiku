@@ -5,7 +5,7 @@ import 'package:kopiku/screens/detail_screen.dart';
 import 'package:kopiku/widgets/favorites_widget.dart';
 
 class ItemsWidget extends StatefulWidget {
-  final selected;
+  final String selected;
   const ItemsWidget({Key? key, required this.selected}) : super(key: key);
 
   @override
